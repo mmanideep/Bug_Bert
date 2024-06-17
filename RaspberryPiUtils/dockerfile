@@ -1,0 +1,24 @@
+# Use the official Python image as base
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy the model file to the container
+COPY ./BugBertModel/model.pth /app/model.pth
+
+# Install dependencies
+RUN pip install fastapi pydantic uvicorn torch transformers==4.40.1
+
+# Copy the FastAPI app code into the container
+COPY ./main.py /app/main.py
+
+# Expose port 9090 for the FastAPI application
+EXPOSE 9090
+
+# Command to run the FastAPI application using uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9090"]
+
+# Docker CMDS
+# docker build -t fastapi-bert .
+# docker run -d -p 9090:9090 fastapi-bert
