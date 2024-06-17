@@ -1,14 +1,16 @@
 import json
 import requests
 
-def send_api_requests(json_file_path, api_url="http://192.168.0.114:9090/predict/"):
+raspberry_pi_ip = "http://192.168.0.114:9090"
+
+def send_api_requests(json_file_path):
     """Reads a JSON file, extracts descriptions, and sends them to an API.
 
     Args:
         json_file_path (str): The path to the JSON file.
         api_url (str, optional): The API endpoint URL. Defaults to "http://192.168.0.114:9090/predict/".
     """
-    
+    api_url = raspberry_pi_ip + "/predict/"
     try:
         # Load the JSON file
         with open(json_file_path, "r") as f:
@@ -40,5 +42,5 @@ def send_api_requests(json_file_path, api_url="http://192.168.0.114:9090/predict
 
 
 # Example usage
-json_file_path = "D:\AI and ML Masters\BugBert\OldFiles\data\data_part1.json"  # Replace with your file path
+json_file_path = ".\..\data\data_part1.json"  # Replace with your file path
 send_api_requests(json_file_path)

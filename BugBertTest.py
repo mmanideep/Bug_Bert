@@ -5,7 +5,7 @@ import time
 import json
 
 # Load saved model and tokenizer
-model_path = "D:\\AI and ML Masters\\BugBert\\BugBertModel\\model.pth"
+model_path = "./RaspberryPiUtils/BugBertModel/model.pth"
 tokenizer = BertTokenizer.from_pretrained('prajjwal1/bert-tiny')
 model = torch.load(model_path)
 
